@@ -28,7 +28,7 @@ pipeline {
 
         stage("Deploy") {
             steps {
-                sh "cd ${env.WORKSPACE} && docker-compose down && docker-compose up -d"
+                sh "cd ${env.WORKSPACE} && docker compose down && docker compose up -d"
             }
         }
     }
