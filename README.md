@@ -1,7 +1,7 @@
 # Simple Notes App for TWS Communityy
 This is a simple notes app built with React and Django.
 
-## Requirements
+## Requirements for app 
 1. Python 3.9
 2. Node.js
 3. React
