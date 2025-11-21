@@ -2,7 +2,7 @@ version : "3.3"
 services :
 # service for notesapp
   web :
-  # image will pull from docker hub
+  # image will pull from docker hub pushed by asad
      image : asadbashir7755/notesapp:latest
      ports :
          - "8000:8000"
