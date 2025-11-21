@@ -1,28 +1,32 @@
 pipeline {
-    agent any
-    stages{
-        stage("Clone Code"){
-            steps{
+    agent { label 'ubuntuagent' }
+
+    stages {
+        stage("Clone Code") {
+            steps {
                 git url: "https://github.com/asadbashir7755/django-notes-app-cicd.git", branch: "dev"
             }
         }
-        stage("Build and Test"){
-            steps{
-                sh "docker build . -t notesapp"
+
+        stage("Build and Test") {
+            steps {
+                sh "docker build --rm -t notesapp ."
             }
         }
-        stage("Push to Docker Hub"){
-            steps{
-                withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
-                sh "docker tag note-app-test-new ${env.dockerHubUser}/note-app-test-new:latest"
-                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                sh "docker push ${env.dockerHubUser}/note-app-test-new:latest"
+
+        stage("Push to Docker Hub") {
+            steps {
+                withCredentials([usernamePassword(credentialsId:"dockerHub", passwordVariable:"dockerHubPass", usernameVariable:"dockerHubUser")]) {
+                    sh "docker tag notesapp ${env.dockerHubUser}/notesapp:latest"
+                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                    sh "docker push ${env.dockerHubUser}/notesapp:latest"
                 }
             }
         }
-        stage("Deploy"){
-            steps{
-                sh "docker-compose down && docker-compose up -d"
+
+        stage("Deploy") {
+            steps {
+                sh "cd ${env.WORKSPACE} && docker-compose down && docker-compose up -d"
             }
         }
     }
