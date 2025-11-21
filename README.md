@@ -1,4 +1,4 @@
-# Simple Notes App for cicd pipeline added
+# Simple Notes App for cicd pipeline added kkandj
 This is a simple notes app built with React and Django.
 
 ## Requirements
