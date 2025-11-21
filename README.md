@@ -1,4 +1,4 @@
-# Simple Notes Appp
+# Simple Notes App for cicd
 This is a simple notes app built with React and Django.
 
 ## Requirements
