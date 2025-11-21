@@ -1,4 +1,4 @@
-# Simple Notes App for cicd pipeline
+# Simple Notes App for cicd pipeline added
 This is a simple notes app built with React and Django.
 
 ## Requirements
