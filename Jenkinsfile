@@ -1,3 +1,4 @@
+// build steps for  notesapp
 pipeline {
     agent { label 'ubuntuagent' }
 
