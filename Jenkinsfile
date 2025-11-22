@@ -1,9 +1,18 @@
 // build steps for  notesapp
 // another comment
+@Library("helloshared") _
 pipeline {
     agent { label 'ubuntuagent' }
+    
 
     stages {
+        stage("print hello"){
+            steps{
+                script{
+                    hello()
+                }
+            }
+        }
         stage("Clone Code") {
             steps {
                 git url: "https://github.com/asadbashir7755/django-notes-app-cicd.git", branch: "dev"
