@@ -15,7 +15,9 @@ pipeline {
         }
         stage("Clone Code") {
             steps {
-                clone()
+                script{
+                    clone('https://github.com/asadbashir7755/django-notes-app-cicd.git',"dev")
+                }
             }
         }
 
